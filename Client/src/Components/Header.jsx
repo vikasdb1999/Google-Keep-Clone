@@ -7,6 +7,7 @@ function Header() {
   const {userStatus,setStatus} = useContext(MyContext);
   function logOut()
   {
+    
     fetch("http://localhost:4000/logout",{
       credentials: "include",
       headers: {
@@ -18,9 +19,8 @@ function Header() {
       console.log(res);
       if(res.status === 200)
       {
-        console.log("hi");
-        setStatus(false);
         window.location.href = "/";
+        setStatus(false);
       }
     })
   }

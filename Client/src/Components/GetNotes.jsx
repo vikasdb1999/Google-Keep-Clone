@@ -66,26 +66,29 @@ function GetNotes() {
   }
   function editItem(noteId,title,content)
   {
-    const note= {
+    const editedNote= {
+      _id: noteId,
       noteId,
       title,
       content
     };
+    const updatedNotes = notes.map((note) =>
+    note._id === noteId ? editedNote : note
+  );
+    setNote(updatedNotes);
     fetch(`http://localhost:4000/edit`,{
         method: "PUT",
         credentials: "include",
-        body: JSON.stringify(note),
+        body: JSON.stringify(editedNote),
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         }
-      }).then(async res=>{
+      }).then(res=>{
         if(res.status === 200)
         {
-          const data = await res.json();
-            setNote(data);
-          
+          console.log("OK");
         }
       }).catch(err=>{
         console.log(err);

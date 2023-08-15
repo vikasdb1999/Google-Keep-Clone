@@ -116,8 +116,7 @@ app.put("/edit",(req,res)=>{
       then(async (result)=>{
         if(result.modifiedCount >0)
         {
-          const notes = await Note.find({user: googleId});
-          res.status(200).json(notes);
+          res.status(200);
         }
       });
      

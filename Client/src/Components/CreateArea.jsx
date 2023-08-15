@@ -62,6 +62,7 @@ function CreateArea(props) {
         onChange={changeVal} 
         placeholder="Title"  
         value={note.title}  
+        autoFocus
         />}
         <textarea 
         name="content" 
